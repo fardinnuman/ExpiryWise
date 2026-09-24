@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.expirywise.controller.ShoppingListController"
+      spacing="16"
+      styleClass="shopping-list-view"
+      VBox.vgrow="ALWAYS">
+
+    <padding>
+        <Insets top="20" right="24" bottom="20" left="24"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <VBox spacing="2" HBox.hgrow="ALWAYS">
+            <Label text="Shopping List" styleClass="content-title"/>
+            <Label text="Plan grocery replenishment and restock items before they run out"
+                   styleClass="content-subtitle"/>
+        </VBox>
+
+        <Button text="⚡ Restock Expiring Items"
+                onAction="#handleAutoAddExpiring"
+                styleClass="secondary-button"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="shopping-input-bar">
+        <TextField fx:id="itemField"
+                   promptText="What do you need to buy? (e.g. Almond Milk, Eggs, Sourdough Bread)"
+                   styleClass="form-field"
+                   HBox.hgrow="ALWAYS"/>
+
+        <Button text="+ Add to List"
+                fx:id="addButton"
+                onAction="#handleAddItem"
+                styleClass="primary-button"/>
+
+        <Button text="Clear Completed"
+                fx:id="clearCompletedButton"
+                onAction="#handleClearCompleted"
+                styleClass="secondary-button"/>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="16" styleClass="shopping-progress-bar-container">
+        <VBox spacing="3" HBox.hgrow="ALWAYS">
+            <Label fx:id="progressLabel" text="0 of 0 items purchased (0%)" styleClass="shopping-progress-text"/>
+            <ProgressBar fx:id="shoppingProgressBar" progress="0.0" maxWidth="Infinity" styleClass="shopping-progress-track"/>
+        </VBox>
+
+        <HBox spacing="6" alignment="CENTER_RIGHT">
+            <Button fx:id="filterAllBtn" text="All" onAction="#handleFilterAll" styleClass="filter-tab, filter-tab-active"/>
+            <Button fx:id="filterActiveBtn" text="To Buy" onAction="#handleFilterActive" styleClass="filter-tab"/>
+            <Button fx:id="filterCompletedBtn" text="Completed" onAction="#handleFilterCompleted" styleClass="filter-tab"/>
+        </HBox>
+    </HBox>
+
+    <ScrollPane fitToWidth="true"
+                fitToHeight="true"
+                VBox.vgrow="ALWAYS"
+                styleClass="shopping-scroll">
+
+        <StackPane alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+            <VBox fx:id="shoppingItemsContainer"
+                  spacing="8"
+                  styleClass="shopping-items-list">
+                <padding>
+                    <Insets top="4" right="4" bottom="16" left="4"/>
+                </padding>
+            </VBox>
+
+            <VBox fx:id="emptyStateContainer"
+                  alignment="CENTER"
+                  spacing="12"
+                  visible="false"
+                  managed="false"
+                  styleClass="empty-state-container">
+                <Label text="🛒" styleClass="empty-state-icon"/>
+                <Label text="Your Shopping List is Empty" styleClass="empty-state-title"/>
+                <Label text="Add grocery items you need to restock, or auto-add items that are expiring soon."
+                       styleClass="empty-state-subtitle"
+                       textAlignment="CENTER"/>
+            </VBox>
+        </StackPane>
+
+    </ScrollPane>
+
+</VBox>
