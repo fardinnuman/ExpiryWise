@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.expirywise.controller.EditFoodController"
+      spacing="16"
+      prefWidth="580"
+      styleClass="dialog-root">
+
+    <padding>
+        <Insets top="24" right="28" bottom="24" left="28"/>
+    </padding>
+
+    <VBox spacing="3">
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <Label text="✏️" styleClass="dialog-header-icon"/>
+            <Label text="Edit Food Item" styleClass="content-title"/>
+        </HBox>
+        <Label text="Update food details, storage location, or expiry dates"
+               styleClass="content-subtitle"/>
+    </VBox>
+
+    <Separator styleClass="dialog-separator"/>
+
+    <Label fx:id="errorLabel"
+           text=""
+           visible="false"
+           managed="false"
+           wrapText="true"
+           styleClass="form-error-banner"/>
+
+    <GridPane hgap="16" vgap="14" styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="130" prefWidth="130"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER_LEFT">
+            <Label text="Item Name *" styleClass="form-label"/>
+        </VBox>
+        <TextField fx:id="foodNameField"
+                   promptText="Item Name"
+                   styleClass="form-field"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER_LEFT">
+            <Label text="Category" styleClass="form-label"/>
+        </VBox>
+        <ComboBox fx:id="categoryComboBox"
+                  maxWidth="Infinity"
+                  styleClass="form-combo"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="1"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="2" alignment="CENTER_LEFT">
+            <Label text="Quantity" styleClass="form-label"/>
+        </VBox>
+        <TextField fx:id="quantityField"
+                   promptText="e.g. 1 L, 500g, 2 packs"
+                   styleClass="form-field"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" alignment="CENTER_LEFT">
+            <Label text="Storage Location" styleClass="form-label"/>
+        </VBox>
+        <ComboBox fx:id="storageComboBox"
+                  maxWidth="Infinity"
+                  styleClass="form-combo"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="3"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" alignment="CENTER_LEFT">
+            <Label text="Purchase Date" styleClass="form-label"/>
+        </VBox>
+        <DatePicker fx:id="purchaseDatePicker"
+                    maxWidth="Infinity"
+                    promptText="Purchase date"
+                    styleClass="form-datepicker"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="4"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="5" alignment="CENTER_LEFT">
+            <Label text="Expiry Date *" styleClass="form-label"/>
+        </VBox>
+        <DatePicker fx:id="expiryDatePicker"
+                    maxWidth="Infinity"
+                    promptText="Expiration date"
+                    styleClass="form-datepicker"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="5"/>
+    </GridPane>
+
+    <VBox spacing="8" styleClass="image-section-box">
+        <Label text="Food Photo" styleClass="form-label"/>
+
+        <HBox spacing="14" alignment="CENTER_LEFT">
+            <StackPane styleClass="image-preview-frame" prefWidth="90" prefHeight="70">
+                <ImageView fx:id="imagePreview"
+                           fitWidth="86"
+                           fitHeight="66"
+                           preserveRatio="true"/>
+                <Label fx:id="imagePlaceholderText" text="Default Image" styleClass="image-placeholder-label"/>
+            </StackPane>
+
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <HBox spacing="8">
+                    <Button fx:id="chooseImageButton"
+                            text="Change Photo..."
+                            onAction="#handleChooseImage"
+                            styleClass="secondary-button"/>
+                    <Button fx:id="removeImageButton"
+                            text="Reset to Category Photo"
+                            onAction="#handleRemoveImage"
+                            styleClass="btn-text-danger"/>
+                </HBox>
+                <Label fx:id="imageNameLabel"
+                       text="Custom or category photo"
+                       styleClass="form-hint"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <Separator styleClass="dialog-separator"/>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton"
+                text="Cancel"
+                onAction="#handleCancel"
+                styleClass="secondary-button"/>
+
+        <Button fx:id="saveButton"
+                text="Save Changes"
+                onAction="#handleSave"
+                styleClass="primary-button"/>
+    </HBox>
+
+</VBox>
