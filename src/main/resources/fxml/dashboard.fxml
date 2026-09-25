@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.expirywise.controller.DashboardController"
+      spacing="16"
+      styleClass="dashboard-view"
+      VBox.vgrow="ALWAYS">
+
+    <padding>
+        <Insets top="20" right="24" bottom="20" left="24"/>
+    </padding>
+
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <VBox spacing="2" HBox.hgrow="ALWAYS">
+            <Label text="Dashboard" styleClass="content-title"/>
+            <Label text="Monitor food shelf-life, prevent waste, and track groceries"
+                   styleClass="content-subtitle"/>
+        </VBox>
+
+        <Button text="+ Add Food Item"
+                onAction="#handleAddFood"
+                styleClass="primary-button"/>
+    </HBox>
+
+    <HBox spacing="12" styleClass="stats-container">
+
+        <VBox styleClass="stat-card, stat-card-total" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="📦" styleClass="stat-card-icon"/>
+                <Label text="Total Items" styleClass="stat-label"/>
+            </HBox>
+            <Label fx:id="totalItemsLabel" text="0" styleClass="stat-value"/>
+            <Label text="In active storage" styleClass="stat-subtext"/>
+        </VBox>
+
+        <VBox styleClass="stat-card, stat-card-safe" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="🟢" styleClass="stat-card-icon"/>
+                <Label text="Safe &amp; Fresh" styleClass="stat-label"/>
+            </HBox>
+            <Label fx:id="safeLabel" text="0" styleClass="stat-value, stat-value-safe"/>
+            <Label text="Good for > 3 days" styleClass="stat-subtext"/>
+        </VBox>
+
+        <VBox styleClass="stat-card, stat-card-soon" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="🟡" styleClass="stat-card-icon"/>
+                <Label text="Use Soon" styleClass="stat-label"/>
+            </HBox>
+            <Label fx:id="useSoonLabel" text="0" styleClass="stat-value, stat-value-soon"/>
+            <Label text="1 to 3 days remaining" styleClass="stat-subtext"/>
+        </VBox>
+
+        <VBox styleClass="stat-card, stat-card-today" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="🟠" styleClass="stat-card-icon"/>
+                <Label text="Expires Today" styleClass="stat-label"/>
+            </HBox>
+            <Label fx:id="expiresTodayLabel" text="0" styleClass="stat-value, stat-value-today"/>
+            <Label text="Needs immediate use" styleClass="stat-subtext"/>
+        </VBox>
+
+        <VBox styleClass="stat-card, stat-card-expired" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="🔴" styleClass="stat-card-icon"/>
+                <Label text="Expired" styleClass="stat-label"/>
+            </HBox>
+            <Label fx:id="expiredLabel" text="0" styleClass="stat-value, stat-value-expired"/>
+            <Label text="Past safe date" styleClass="stat-subtext"/>
+        </VBox>
+
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="controls-bar">
+        <HBox alignment="CENTER_LEFT" styleClass="search-box-wrapper" HBox.hgrow="ALWAYS">
+            <Label text="🔍" styleClass="search-icon"/>
+            <TextField fx:id="searchField"
+                       promptText="Search food items or categories..."
+                       styleClass="search-field"
+                       HBox.hgrow="ALWAYS"/>
+            <Button fx:id="clearSearchButton"
+                    text="✕"
+                    visible="false"
+                    onAction="#handleClearSearch"
+                    styleClass="clear-search-button"/>
+        </HBox>
+
+        <ComboBox fx:id="categoryFilter"
+                  promptText="All Categories"
+                  prefWidth="160"
+                  styleClass="filter-combo"/>
+
+        <ComboBox fx:id="statusFilter"
+                  promptText="All Status"
+                  prefWidth="140"
+                  styleClass="filter-combo"/>
+
+        <ComboBox fx:id="sortBy"
+                  promptText="Sort by Expiry"
+                  prefWidth="160"
+                  styleClass="filter-combo"/>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="inventorySectionLabel"
+               text="Pantry Inventory"
+               styleClass="section-title"/>
+        <Label fx:id="filterCountLabel"
+               text=""
+               styleClass="filter-count-badge"/>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Button fx:id="resetFiltersButton"
+                text="Reset Filters"
+                visible="false"
+                managed="false"
+                onAction="#handleResetFilters"
+                styleClass="link-button"/>
+    </HBox>
+
+    <ScrollPane fx:id="dashboardScrollPane"
+                fitToWidth="true"
+                fitToHeight="true"
+                VBox.vgrow="ALWAYS"
+                styleClass="dashboard-scroll">
+
+        <StackPane alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+            <GridPane fx:id="foodGrid"
+                      hgap="16"
+                      vgap="16"
+                      styleClass="food-grid">
+                <padding>
+                    <Insets top="4" right="4" bottom="16" left="4"/>
+                </padding>
+            </GridPane>
+
+            <VBox fx:id="emptyStateContainer"
+                  visible="false"
+                  managed="false"
+                  alignment="CENTER"
+                  spacing="14"
+                  styleClass="empty-state-container">
+                <Label fx:id="emptyStateIcon" text="🥫" styleClass="empty-state-icon"/>
+                <Label fx:id="emptyStateTitle" text="No Food Items Found" styleClass="empty-state-title"/>
+                <Label fx:id="emptyStateSubtitle"
+                       text="Your inventory is empty. Add items to track freshness and expiry dates."
+                       styleClass="empty-state-subtitle"
+                       wrapText="true"
+                       textAlignment="CENTER"/>
+                <Button fx:id="emptyStateActionBtn"
+                        text="+ Add First Food Item"
+                        onAction="#handleAddFood"
+                        styleClass="primary-button"/>
+            </VBox>
+        </StackPane>
+
+    </ScrollPane>
+
+</VBox>
