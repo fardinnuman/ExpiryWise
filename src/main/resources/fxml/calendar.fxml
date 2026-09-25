@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.expirywise.controller.CalendarController"
+            fitToWidth="true"
+            styleClass="calendar-scroll">
+
+    <VBox spacing="18"
+          styleClass="calendar-view">
+
+        <padding>
+            <Insets top="18" right="22" bottom="22" left="22"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="Calendar" styleClass="content-title"/>
+                <Label text="Visual timeline of expiring groceries and scheduled restocking"
+                       styleClass="content-subtitle"/>
+            </VBox>
+
+            <Label fx:id="monthOverviewChip"
+                   text="0 items this month"
+                   styleClass="calendar-summary-pill"/>
+        </HBox>
+
+        <VBox spacing="12" maxWidth="Infinity" styleClass="calendar-card">
+            <padding>
+                <Insets top="16" right="18" bottom="16" left="18"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="calendar-header-bar">
+                <HBox alignment="CENTER_LEFT" spacing="6">
+                    <Button text="‹"
+                            fx:id="previousMonthButton"
+                            onAction="#handlePreviousMonth"
+                            styleClass="calendar-nav-btn"/>
+
+                    <Button text="Today"
+                            onAction="#handleToday"
+                            styleClass="calendar-today-btn"/>
+
+                    <Button text="›"
+                            fx:id="nextMonthButton"
+                            onAction="#handleNextMonth"
+                            styleClass="calendar-nav-btn"/>
+                </HBox>
+
+                <Label fx:id="monthYearLabel"
+                       text="September 2026"
+                       styleClass="calendar-month-title"/>
+
+                <HBox HBox.hgrow="ALWAYS"/>
+
+                <HBox spacing="14" alignment="CENTER_RIGHT" styleClass="calendar-legend-bar">
+                    <Label text="● Safe" styleClass="legend-safe"/>
+                    <Label text="● Use Soon" styleClass="legend-soon"/>
+                    <Label text="● Today" styleClass="legend-today"/>
+                    <Label text="● Expired" styleClass="legend-expired"/>
+                </HBox>
+            </HBox>
+
+            <GridPane fx:id="weekdayGrid" hgap="6" vgap="0">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                    <ColumnConstraints percentWidth="14.28" halignment="CENTER"/>
+                </columnConstraints>
+
+                <Label text="SUN" GridPane.columnIndex="0" styleClass="calendar-weekday-header"/>
+                <Label text="MON" GridPane.columnIndex="1" styleClass="calendar-weekday-header"/>
+                <Label text="TUE" GridPane.columnIndex="2" styleClass="calendar-weekday-header"/>
+                <Label text="WED" GridPane.columnIndex="3" styleClass="calendar-weekday-header"/>
+                <Label text="THU" GridPane.columnIndex="4" styleClass="calendar-weekday-header"/>
+                <Label text="FRI" GridPane.columnIndex="5" styleClass="calendar-weekday-header"/>
+                <Label text="SAT" GridPane.columnIndex="6" styleClass="calendar-weekday-header"/>
+            </GridPane>
+
+            <GridPane fx:id="calendarGrid"
+                      hgap="6"
+                      vgap="6"
+                      maxWidth="Infinity"
+                      styleClass="calendar-days-grid">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                    <ColumnConstraints percentWidth="14.28"/>
+                </columnConstraints>
+            </GridPane>
+        </VBox>
+
+        <VBox maxWidth="Infinity"
+              spacing="12"
+              styleClass="calendar-detail-panel">
+
+            <padding>
+                <Insets top="16" right="18" bottom="18" left="18"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="📅" styleClass="dialog-header-icon"/>
+                <VBox spacing="1" HBox.hgrow="ALWAYS">
+                    <Label fx:id="selectedDateTitle"
+                           text="Selected Date"
+                           styleClass="panel-header-title"/>
+                    <Label fx:id="selectedDateSub"
+                           text="Expiry Schedule"
+                           styleClass="panel-header-sub"/>
+                </VBox>
+
+                <Button fx:id="addForDateBtn"
+                        text="+ Add Item for this Date"
+                        onAction="#handleAddForSelectedDate"
+                        styleClass="secondary-button"/>
+            </HBox>
+
+            <Separator styleClass="dialog-separator"/>
+
+            <VBox fx:id="dayItemsContainer"
+                  spacing="8"
+                  styleClass="day-items-list"/>
+
+        </VBox>
+
+    </VBox>
+
+</ScrollPane>
