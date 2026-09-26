@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.expirywise.controller.AnalyticsController"
+            fitToWidth="true"
+            styleClass="analytics-scroll">
+
+    <VBox spacing="20" styleClass="analytics-view">
+        <padding>
+            <Insets top="20" right="24" bottom="24" left="24"/>
+        </padding>
+
+        <VBox spacing="2">
+            <Label text="Analytics &amp; Insights" styleClass="content-title"/>
+            <Label text="Understand your food consumption, waste risk, and category trends"
+                   styleClass="content-subtitle"/>
+        </VBox>
+
+        <HBox spacing="12" styleClass="stats-container">
+
+            <VBox styleClass="analytics-card, stat-card-risk" HBox.hgrow="ALWAYS">
+                <Label text="⚠️ Waste Risk Index" styleClass="analytics-card-label"/>
+                <Label fx:id="wasteRiskLabel" text="100%" styleClass="analytics-card-value, stat-value-risk"/>
+                <Label text="Items at risk of waste" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-freshness" HBox.hgrow="ALWAYS">
+                <Label text="🛡️ Freshness Score" styleClass="analytics-card-label"/>
+                <Label fx:id="freshnessScoreLabel" text="0%" styleClass="analytics-card-value, stat-value-freshness"/>
+                <Label text="Pantry freshness ratio" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-category" HBox.hgrow="ALWAYS">
+                <Label text="🏷️ Active Categories" styleClass="analytics-card-label"/>
+                <Label fx:id="activeCategoriesLabel" text="3" styleClass="analytics-card-value, stat-value-category"/>
+                <Label text="Active food categories" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-total" HBox.hgrow="ALWAYS">
+                <Label text="📦 Total Items" styleClass="analytics-card-label"/>
+                <Label fx:id="totalItemsLabel" text="0" styleClass="analytics-card-value"/>
+                <Label text="Active pantry inventory" styleClass="analytics-card-description"/>
+            </VBox>
+
+        </HBox>
+
+        <HBox spacing="12" styleClass="stats-container">
+
+            <VBox styleClass="analytics-card, stat-card-safe" HBox.hgrow="ALWAYS">
+                <Label text="🟢 Safe &amp; Fresh" styleClass="analytics-card-label"/>
+                <Label fx:id="safeItemsLabel" text="0" styleClass="analytics-card-value, stat-value-safe"/>
+                <Label text="> 3 days remaining" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-soon" HBox.hgrow="ALWAYS">
+                <Label text="🟡 Use Soon" styleClass="analytics-card-label"/>
+                <Label fx:id="useSoonItemsLabel" text="0" styleClass="analytics-card-value, stat-value-soon"/>
+                <Label text="1–3 days remaining" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-today" HBox.hgrow="ALWAYS">
+                <Label text="🟠 Expires Today" styleClass="analytics-card-label"/>
+                <Label fx:id="expiresTodayItemsLabel" text="0" styleClass="analytics-card-value, stat-value-today"/>
+                <Label text="Immediate attention" styleClass="analytics-card-description"/>
+            </VBox>
+
+            <VBox styleClass="analytics-card, stat-card-expired" HBox.hgrow="ALWAYS">
+                <Label text="🔴 Expired" styleClass="analytics-card-label"/>
+                <Label fx:id="expiredItemsLabel" text="0" styleClass="analytics-card-value, stat-value-expired"/>
+                <Label text="Past safe date" styleClass="analytics-card-description"/>
+            </VBox>
+
+        </HBox>
+
+        <HBox fx:id="healthBanner" alignment="CENTER_LEFT" spacing="12" styleClass="health-banner">
+            <Label fx:id="healthIcon" text="🛡️" styleClass="health-banner-icon"/>
+            <VBox spacing="1" HBox.hgrow="ALWAYS">
+                <Label fx:id="healthTitle" text="Pantry Health: Good (85% Fresh)" styleClass="health-banner-title"/>
+                <Label fx:id="healthDesc" text="Most of your items are safe. Keep an eye on items expiring this week."
+                       styleClass="health-banner-desc"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="18">
+
+            <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="analytics-panel">
+                <VBox spacing="2">
+                    <Label text="Food Items by Category" styleClass="section-title"/>
+                    <Label text="Volume distribution across food types" styleClass="content-subtitle"/>
+                </VBox>
+
+                <VBox fx:id="categoryContainer"
+                      alignment="CENTER"
+                      minHeight="260"
+                      VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="analytics-panel">
+                <VBox spacing="2">
+                    <Label text="Inventory Expiry Status" styleClass="section-title"/>
+                    <Label text="Current freshness ratio of tracked items" styleClass="content-subtitle"/>
+                </VBox>
+
+                <VBox fx:id="statusContainer"
+                      alignment="CENTER"
+                      minHeight="260"
+                      VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+        </HBox>
+
+        <VBox spacing="12" styleClass="analytics-panel">
+            <VBox spacing="2">
+                <Label text="Storage Location Distribution" styleClass="section-title"/>
+                <Label text="Where your food inventory is stored" styleClass="content-subtitle"/>
+            </VBox>
+
+            <HBox fx:id="storageContainer" spacing="20" alignment="CENTER_LEFT">
+            </HBox>
+        </VBox>
+
+    </VBox>
+</ScrollPane>
