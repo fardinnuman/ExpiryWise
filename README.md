@@ -145,7 +145,6 @@ Existing solutions fail to resolve this issue effectively:
 |--------|-------------|
 | ![Login](screenshots/login.png) | User Authentication & Registration Interface |
 | ![Dashboard](screenshots/dashboard.png) | Responsive Pantry Inventory Dashboard |
-| ![Add Food](screenshots/add-food.png) | Add & Edit Food Item Dialogs |
 | ![Calendar](screenshots/calendar.png) | Interactive Monthly Expiry Calendar |
 | ![Notifications](screenshots/notifications.png) | Notification & Urgent Triage Center |
 | ![Shopping](screenshots/shopping-list.png) | Smart Shopping List & Restock Module |
@@ -212,7 +211,7 @@ ExpiryWise is built on a multi-tier layered architecture incorporating the **Mod
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │  1. PRESENTATION LAYER (View)                                                          │
-│     ├── FXML Layouts (login.fxml, dashboard.fxml, calendar.fxml, etc.)                │
+│     ├── FXML Layouts (login.fxml, dashboard.fxml, calendar.fxml, etc.)                 │
 │     ├── CSS Stylesheets (style.css [Light] & dark.css [Dark])                          │
 │     └── Static Media (Category Image Fallbacks, Application Icons)                     │
 └───────────────────────────────────────────┬────────────────────────────────────────────┘
@@ -220,9 +219,9 @@ ExpiryWise is built on a multi-tier layered architecture incorporating the **Mod
                                             ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │  2. CONTROLLER LAYER (Event Dispatch & UI State)                                       │
-│     ├── LoginController           ├── MainController         ├── DashboardController    │
-│     ├── FoodDialogController      ├── EditFoodController     ├── CalendarController     │
-│     ├── NotificationsController   ├── ShoppingListController ├── AnalyticsController    │
+│     ├── LoginController           ├── MainController         ├── DashboardController   │
+│     ├── FoodDialogController      ├── EditFoodController     ├── CalendarController    │
+│     ├── NotificationsController   ├── ShoppingListController ├── AnalyticsController   │
 │     └── SettingsController                                                             │
 └───────────────────────────────────────────┬────────────────────────────────────────────┘
                                             │ Dispatches Domain Requests
@@ -231,7 +230,7 @@ ExpiryWise is built on a multi-tier layered architecture incorporating the **Mod
 │  3. SERVICE LAYER (Business Logic & Algorithms)                                        │
 │     ├── FoodService               (Expiry rules, decay math, freshness scoring)        │
 │     ├── ShoppingListService       (Checklist management, auto-restock algorithm)       │
-│     └── ThemeManager              (Observer pattern dynamic stylesheet registry)        │
+│     └── ThemeManager              (Observer pattern dynamic stylesheet registry)       │
 └───────────────────────────────────────────┬────────────────────────────────────────────┘
                                             │ Executes CRUD Operations
                                             ▼
@@ -245,7 +244,7 @@ ExpiryWise is built on a multi-tier layered architecture incorporating the **Mod
                                             ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │  5. DATABASE LAYER (Local Disk Persistence)                                            │
-│     └── SQLite 3 Database Engine  (Local single file: expirywise.db)                    │
+│     └── SQLite 3 Database Engine  (Local single file: expirywise.db)                   │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
