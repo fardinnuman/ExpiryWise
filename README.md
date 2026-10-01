@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🥫 ExpiryWise
+# 🥦 ExpiryWise
 ### Smart Food Expiry & Kitchen Inventory Management System
 
 [![Java Version](https://img.shields.io/badge/Java-21%20LTS-orange.svg?logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
