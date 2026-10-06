@@ -143,13 +143,13 @@ Existing solutions fail to resolve this issue effectively:
 
 | Light Mode                                            | Dark Mode                                                 | Description                                  |
 | ----------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------- |
-| ![Login Light](screenshots/login-light.png)                 | ![Login Dark](screenshots/login-dark.png)                 | User Authentication & Registration Interface |
-| ![Dashboard Light](screenshots/dashboard-light.png)         | ![Dashboard Dark](screenshots/dashboard-dark.png)         | Responsive Pantry Inventory Dashboard        |
-| ![Calendar Light](screenshots/calendar-light.png)           | ![Calendar Dark](screenshots/calendar-dark.png)           | Interactive Monthly Expiry Calendar          |
-| ![Notifications Light](screenshots/notifications-light.png) | ![Notifications Dark](screenshots/notifications-dark.png) | Notification & Urgent Triage Center          |
-| ![Shopping Light](screenshots/shopping-list-light.png)      | ![Shopping Dark](screenshots/shopping-list-dark.png)      | Smart Shopping List & Restock Module         |
-| ![Analytics Light](screenshots/analytics-light.png)         | ![Analytics Dark](screenshots/analytics-dark.png)         | Kitchen Analytics Dashboard                  |
-| ![Settings Light](screenshots/settings-light.png)           | ![Settings Dark](screenshots/settings-dark.png)           | Settings Interface with Dark Theme 
+| ![Login Light](screenshots/login-l.png)                 | ![Login Dark](screenshots/login-d.png)                 | User Authentication & Registration Interface |
+| ![Dashboard Light](screenshots/dashboard-l.png)         | ![Dashboard Dark](screenshots/dashboard-d.png)         | Responsive Pantry Inventory Dashboard        |
+| ![Calendar Light](screenshots/calendar-l.png)           | ![Calendar Dark](screenshots/calendar-d.png)           | Interactive Monthly Expiry Calendar          |
+| ![Notifications Light](screenshots/notifications-l.png) | ![Notifications Dark](screenshots/notifications-d.png) | Notification & Urgent Triage Center          |
+| ![Shopping Light](screenshots/shopping-list-l.png)      | ![Shopping Dark](screenshots/shopping-list-d.png)      | Smart Shopping List & Restock Module         |
+| ![Analytics Light](screenshots/analytics-l.png)         | ![Analytics Dark](screenshots/analytics-d.png)         | Kitchen Analytics Dashboard                  |
+| ![Settings Light](screenshots/settings-l.png)           | ![Settings Dark](screenshots/settings-d.png)           | Settings Interface with Dark Theme 
 
 ## 📊 System Documentation & Academic Analyses
 
