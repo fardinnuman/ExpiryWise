@@ -141,15 +141,15 @@ Existing solutions fail to resolve this issue effectively:
 
 ## 📸 Screenshots
 
-| Screen | Description |
-|--------|-------------|
-| ![Login](screenshots/login.png) | User Authentication & Registration Interface |
-| ![Dashboard](screenshots/dashboard.png) | Responsive Pantry Inventory Dashboard |
-| ![Calendar](screenshots/calendar.png) | Interactive Monthly Expiry Calendar |
-| ![Notifications](screenshots/notifications.png) | Notification & Urgent Triage Center |
-| ![Shopping](screenshots/shopping-list.png) | Smart Shopping List & Restock Module |
-| ![Analytics](screenshots/analytics.png) | Kitchen Analytics Dashboard |
-| ![Settings](screenshots/settings.png) | Settings Interface with Dark Theme |
+| Light Mode                                            | Dark Mode                                                 | Description                                  |
+| ----------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------- |
+| ![Login Light](screenshots/login.png)                 | ![Login Dark](screenshots/login-dark.png)                 | User Authentication & Registration Interface |
+| ![Dashboard Light](screenshots/dashboard.png)         | ![Dashboard Dark](screenshots/dashboard-dark.png)         | Responsive Pantry Inventory Dashboard        |
+| ![Calendar Light](screenshots/calendar.png)           | ![Calendar Dark](screenshots/calendar-dark.png)           | Interactive Monthly Expiry Calendar          |
+| ![Notifications Light](screenshots/notifications.png) | ![Notifications Dark](screenshots/notifications-dark.png) | Notification & Urgent Triage Center          |
+| ![Shopping Light](screenshots/shopping-list.png)      | ![Shopping Dark](screenshots/shopping-list-dark.png)      | Smart Shopping List & Restock Module         |
+| ![Analytics Light](screenshots/analytics.png)         | ![Analytics Dark](screenshots/analytics-dark.png)         | Kitchen Analytics Dashboard                  |
+| ![Settings Light](screenshots/settings.png)           | ![Settings Dark](screenshots/settings-dark.png)           | Settings Interface with Dark Theme 
 
 ## 📊 System Documentation & Academic Analyses
 
